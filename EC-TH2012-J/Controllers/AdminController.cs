@@ -35,6 +35,7 @@ namespace WebNhaHangOnline.Controllers
             ViewBag.HangSX = new SelectList(spm.GetAllHangSX(), "HangSX", "TenHang");
             ViewBag.LoaiSP = new SelectList(spm.GetAllLoaiSP(), "MaLoai", "TenLoai");
             ViewBag.NhaCC = new SelectList(spm.GetAllNhaCC(), "MaNCC", "TenNCC");
+            ViewBag.CountSLSP = new SelectList(spm.GetAllCountKhoSL(), "SL", "TenSP");
             return View();
         }
 
@@ -131,6 +132,7 @@ namespace WebNhaHangOnline.Controllers
             }
             ViewBag.HangSX = new SelectList(spm.GetAllHangSX(), "HangSX", "TenHang", sanpham.HangSX);
             ViewBag.LoaiSP = new SelectList(spm.GetAllLoaiSP(), "MaLoai", "TenLoai", sanpham.LoaiSP);
+            ViewBag.CountSLSP = new SelectList(spm.GetAllCountKhoSL(), "SL", "TenSP", sanpham.SoLuong);
             return View("SanPham",sanpham);
         }
 

@@ -90,6 +90,30 @@ namespace WebNhaHangOnline.Models
             return db.LoaiSPs;
         }
 
+        public class TongSPKhoNew
+        {
+            public string IDKho { get; set; }
+            public string IDSP { get; set; }
+            public int SL { get; set; }
+            public string TenSP { get; set; }
+        }
+
+        internal List<TongSPKhoNew> GetAllCountKhoSL()
+        {
+            var result =   db.TongSPKhoes
+                    .Join(db.SanPhams, sp => sp.IDSP, k => k.MaSP, 
+                    (sp, kho) => new { Kho = sp, SanPham = kho})
+                    .Select(sp_k => new { sp_k.Kho.IDKho, sp_k.Kho.IDSP, sp_k.Kho.SL, sp_k.SanPham.TenSP } );
+            var newlist = new List<TongSPKhoNew>();
+            foreach (var item in result)
+            {
+                string json = Newtonsoft.Json.JsonConvert.SerializeObject(item);
+                var kq = Newtonsoft.Json.JsonConvert.DeserializeObject<TongSPKhoNew>(json);
+                newlist.Add(kq);
+            }
+            return newlist;
+        }
+
         internal IQueryable<NhaCungCap> GetAllNhaCC()
         {
             return db.NhaCungCaps.Where(d => d.Net_user != null);

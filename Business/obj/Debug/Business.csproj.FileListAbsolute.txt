@@ -16,3 +16,4 @@ F:\Code\Code\Business\bin\Debug\VDS.Common.pdb
 F:\Code\Code\Business\bin\Debug\VDS.Common.xml
 F:\Code\Code\Business\obj\Debug\Business.dll
 F:\Code\Code\Business\obj\Debug\Business.pdb
+F:\Code\Code\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
